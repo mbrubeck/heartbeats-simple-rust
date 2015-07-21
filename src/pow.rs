@@ -83,7 +83,6 @@ impl HeartbeatPow {
 #[cfg(test)]
 mod test {
     use super::HeartbeatPow;
-    use pow::*;
     use std::fs::File;
 
     #[test]
@@ -107,14 +106,6 @@ mod test {
     #[test]
     fn test_file() {
         let mut hb = HeartbeatPow::new(5, None, Some(File::create("foo.log").unwrap())).unwrap();
-        hb.heartbeat(0, 1, 0, 1, 0, 0);
-        hb.log_to_buffer_index().unwrap();
-    }
-
-    #[test]
-    fn test_callback() {
-        let mut hb = HeartbeatPow::new(5, None, None).unwrap();
-        hb.hb.hwc_callback = |h: *const heartbeat_pow_context| heartbeat_pow_log_window_buffer(h, 1, 0);
         hb.heartbeat(0, 1, 0, 1, 0, 0);
         hb.log_to_buffer_index().unwrap();
     }
