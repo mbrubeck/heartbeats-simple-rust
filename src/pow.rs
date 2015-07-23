@@ -16,7 +16,7 @@ impl HeartbeatPow {
                hwc_callback: Option<heartbeat_pow_window_complete>,
                mut log: Option<File>) -> Result<HeartbeatPow, &'static str> {
         let mut hbr: Vec<heartbeat_pow_record> = Vec::with_capacity(window_size);
-        unsafe {
+        let hb: heartbeat_pow_context = unsafe {
             // must explicitly set size so we can read data later
             // (Rust isn't aware of native code modifying the buffer)
             hbr.set_len(window_size);
@@ -25,18 +25,18 @@ impl HeartbeatPow {
                                      hbr.capacity() as u64,
                                      hbr.as_mut_ptr(),
                                      hwc_callback) {
-                0 => {
-                    if let Some(ref mut l) = log {
-                        l.write_all("HB    Tag    Work    Start_Time    End_time    \
-                            Global_Perf    Window_Perf    Instant_Perf    \
-                            Start_Energy    End_Energy    \
-                            Global_Pwr    Window_Pwr    Instant_Pwr\n".as_bytes()).unwrap()
-                    }
-                    Ok(HeartbeatPow { hb: hb, hbr: hbr, log: log, })
-                },
-                _ => Err("Failed to initialize heartbeat")
+                0 => hb,
+                _ => return Err("Failed to initialize heartbeat")
             }
+        };
+        // write header to log file if there is one
+        if let Some(ref mut l) = log {
+            l.write_all("HB    Tag    Work    Start_Time    End_time    \
+                Global_Perf    Window_Perf    Instant_Perf    \
+                Start_Energy    End_Energy    \
+                Global_Pwr    Window_Pwr    Instant_Pwr\n".as_bytes()).unwrap()
         }
+        Ok(HeartbeatPow { hb: hb, hbr: hbr, log: log, })
     }
 
     /// Issue a heartbeat
