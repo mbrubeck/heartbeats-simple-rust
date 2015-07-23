@@ -31,10 +31,12 @@ impl HeartbeatPow {
         };
         // write header to log file if there is one
         if let Some(ref mut l) = log {
-            l.write_all("HB    Tag    Work    Start_Time    End_time    \
-                Global_Perf    Window_Perf    Instant_Perf    \
-                Start_Energy    End_Energy    \
-                Global_Pwr    Window_Pwr    Instant_Pwr\n".as_bytes()).unwrap()
+            l.write_all("HB    Tag    \
+              Global_Work    Window_Work    Work    \
+              Global_Time    Window_Time    Start_Time    End_Time    \
+              Global_Perf    Window_Perf    Instant_Perf    \
+              Global_Energy    Window_Energy    Start_Energy    End_Energy    \
+              Global_Pwr    Window_Pwr    Instant_Pwr\n".as_bytes()).unwrap()
         }
         Ok(HeartbeatPow { hb: hb, hbr: hbr, log: log, })
     }
@@ -53,13 +55,17 @@ impl HeartbeatPow {
     }
 
     fn write_log(r: &heartbeat_pow_record, l: &mut File) -> io::Result<usize> {
-        l.write(format!("{}    {}    {}    {}    {}    \
+        l.write(format!("{}    {}    \
                          {}    {}    {}    \
-                         {}    {}    \
+                         {}    {}    {}    {}    \
+                         {}    {}    {}    \
+                         {}    {}    {}    {}    \
                          {}    {}    {}\n",
-                        r.id, r.user_tag, r.work, r.start_time, r.end_time,
+                        r.id, r.user_tag,
+                        r.wd.global, r.wd.window, r.work,
+                        r.td.global, r.td.window, r.start_time, r.end_time,
                         r.perf.global, r.perf.window, r.perf.instant,
-                        r.start_energy, r.end_energy,
+                        r.ed.global, r.ed.window, r.start_energy, r.end_energy,
                         r.pwr.global, r.pwr.window, r.pwr.instant).as_bytes())
     }
 
