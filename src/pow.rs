@@ -31,12 +31,18 @@ impl HeartbeatPow {
         };
         // write header to log file if there is one
         if let Some(ref mut l) = log {
-            l.write_all("HB    Tag    \
-              Global_Work    Window_Work    Work    \
-              Global_Time    Window_Time    Start_Time    End_Time    \
-              Global_Perf    Window_Perf    Instant_Perf    \
-              Global_Energy    Window_Energy    Start_Energy    End_Energy    \
-              Global_Pwr    Window_Pwr    Instant_Pwr\n".as_bytes()).unwrap()
+            l.write_all(format!("{:6} {:6} \
+                         {:11} {:11} {:11} \
+                         {:15} {:15} {:15} {:15} \
+                         {:15} {:15} {:15} \
+                         {:15} {:15} {:15} {:15} \
+                         {:15} {:15} {}\n",
+                        "HB", "Tag",
+                        "Global_Work", "Window_Work", "Work",
+                        "Global_Time", "Window_Time", "Start_Time", "End_Time",
+                        "Global_Perf", "Window_Perf", "Instant_Perf",
+                        "Global_Energy", "Window_Energy", "Start_Energy", "End_Energy",
+                        "Global_Pwr", "Window_Pwr", "Instant_Pwr").as_bytes()).unwrap()
         }
         Ok(HeartbeatPow { hb: hb, hbr: hbr, log: log, })
     }
@@ -55,12 +61,12 @@ impl HeartbeatPow {
     }
 
     fn write_log(r: &heartbeat_pow_record, l: &mut File) -> io::Result<usize> {
-        l.write(format!("{}    {}    \
-                         {}    {}    {}    \
-                         {}    {}    {}    {}    \
-                         {}    {}    {}    \
-                         {}    {}    {}    {}    \
-                         {}    {}    {}\n",
+        l.write(format!("{:<6} {:<6} \
+                         {:<11} {:<11} {:<11} \
+                         {:<15} {:<15} {:<15} {:<15} \
+                         {:<15.6} {:<15.6} {:<15.6} \
+                         {:<15} {:<15} {:<15} {:<15} \
+                         {:<15.6} {:<15.6} {:<.6}\n",
                         r.id, r.user_tag,
                         r.wd.global, r.wd.window, r.work,
                         r.td.global, r.td.window, r.start_time, r.end_time,
@@ -112,7 +118,7 @@ mod test {
     #[test]
     fn test_file() {
         let mut hb = HeartbeatPow::new(5, None, Some(File::create("foo.log").unwrap())).unwrap();
-        hb.heartbeat(0, 1, 0, 1, 0, 0);
+        hb.heartbeat(0, 1, 0, 1000, 0, 0);
         hb.log_to_buffer_index().unwrap();
     }
 }
