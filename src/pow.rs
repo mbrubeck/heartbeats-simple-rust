@@ -3,20 +3,24 @@ use std::mem;
 use std::io::{self, Write};
 use std::fs::File;
 
+pub type HeartbeatPowContext = heartbeat_pow_context;
+pub type HeartbeatPowRecord = heartbeat_pow_record;
+pub type HeartbeatPowWindowComplete = heartbeat_pow_window_complete;
+
 /// Contains the Heartbeat and its window data buffer.
 pub struct HeartbeatPow {
-    pub hb: heartbeat_pow_context,
-    pub hbr: Vec<heartbeat_pow_record>,
+    pub hb: HeartbeatPowContext,
+    pub hbr: Vec<HeartbeatPowRecord>,
     pub log: Option<File>,
 }
 
 impl HeartbeatPow {
     /// Allocate and initialize a new `Heartbeat`.
     pub fn new(window_size: usize,
-               hwc_callback: Option<heartbeat_pow_window_complete>,
+               hwc_callback: Option<HeartbeatPowWindowComplete>,
                mut log: Option<File>) -> Result<HeartbeatPow, &'static str> {
-        let mut hbr: Vec<heartbeat_pow_record> = Vec::with_capacity(window_size);
-        let hb: heartbeat_pow_context = unsafe {
+        let mut hbr: Vec<HeartbeatPowRecord> = Vec::with_capacity(window_size);
+        let hb: HeartbeatPowContext = unsafe {
             // must explicitly set size so we can read data later
             // (Rust isn't aware of native code modifying the buffer)
             hbr.set_len(window_size);
@@ -60,7 +64,7 @@ impl HeartbeatPow {
         }
     }
 
-    fn write_log(r: &heartbeat_pow_record, l: &mut File) -> io::Result<usize> {
+    fn write_log(r: &HeartbeatPowRecord, l: &mut File) -> io::Result<usize> {
         l.write(format!("{:<6} {:<6} \
                          {:<11} {:<11} {:<11} \
                          {:<15} {:<15} {:<20} {:<20} \
@@ -94,7 +98,7 @@ impl HeartbeatPow {
 
 #[cfg(test)]
 mod test {
-    use super::HeartbeatPow;
+    use super::*;
     use std::fs::File;
 
     #[test]
@@ -112,6 +116,22 @@ mod test {
             end_time += TIME_INC;
             start_energy = end_energy;
             end_energy += ENERGY_INC;
+        }
+    }
+
+    #[test]
+    fn test_callback() {
+        static mut received_cb: bool = false;
+        extern fn callback(_hb: *const HeartbeatPowContext) {
+            unsafe {
+                received_cb = true;
+            }
+        }
+
+        let mut hb = HeartbeatPow::new(1, Some(callback), None).unwrap();
+        hb.heartbeat(0, 1, 0, 1000, 0, 0);
+        unsafe {
+            assert!(received_cb);
         }
     }
 
