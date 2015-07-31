@@ -1,4 +1,4 @@
-use heartbeats_simple_sys::pow::{heartbeat_pow_init, heartbeat_pow};
+use heartbeats_simple_sys::pow::*;
 use std::mem;
 use std::io::{self, Write};
 use std::fs::File;
@@ -92,6 +92,90 @@ impl HeartbeatPow {
                 l.flush()
             }
             None => Ok(())
+        }
+    }
+
+    pub fn get_window_size(&self) -> u64 {
+        unsafe {
+            hb_pow_get_window_size(&self.hb)
+        }
+    }
+
+    pub fn get_user_tag(&self) -> u64 {
+        unsafe {
+            hb_pow_get_user_tag(&self.hb)
+        }
+    }
+
+    pub fn get_global_time(&self) -> u64 {
+        unsafe {
+            hb_pow_get_global_time(&self.hb)
+        }
+    }
+
+    pub fn get_window_time(&self) -> u64 {
+        unsafe {
+            hb_pow_get_window_time(&self.hb)
+        }
+    }
+
+    pub fn get_global_work(&self) -> u64 {
+        unsafe {
+            hb_pow_get_global_work(&self.hb)
+        }
+    }
+
+    pub fn get_window_work(&self) -> u64 {
+        unsafe {
+            hb_pow_get_window_work(&self.hb)
+        }
+    }
+
+    pub fn get_global_perf(&self) -> f64 {
+        unsafe {
+            hb_pow_get_global_perf(&self.hb)
+        }
+    }
+
+    pub fn get_window_perf(&self) -> f64 {
+        unsafe {
+            hb_pow_get_window_perf(&self.hb)
+        }
+    }
+
+    pub fn get_instant_perf(&self) -> f64 {
+        unsafe {
+            hb_pow_get_instant_perf(&self.hb)
+        }
+    }
+
+    pub fn get_global_energy(&self) -> u64 {
+        unsafe {
+            hb_pow_get_global_energy(&self.hb)
+        }
+    }
+
+    pub fn get_window_energy(&self) -> u64 {
+        unsafe {
+            hb_pow_get_window_energy(&self.hb)
+        }
+    }
+
+    pub fn get_global_power(&self) -> f64 {
+        unsafe {
+            hb_pow_get_global_power(&self.hb)
+        }
+    }
+
+    pub fn get_window_power(&self) -> f64 {
+        unsafe {
+            hb_pow_get_window_power(&self.hb)
+        }
+    }
+
+    pub fn get_instant_power(&self) -> f64 {
+        unsafe {
+            hb_pow_get_instant_power(&self.hb)
         }
     }
 }
