@@ -1,4 +1,4 @@
 extern crate libc;
-extern crate heartbeats_simple_sys;
+extern crate hbs_pow_sys;
 
 pub mod pow;

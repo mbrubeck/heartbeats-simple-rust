@@ -6,10 +6,10 @@ description = "Rust wrappers for heartbeats-simple-sys"
 license = "MIT"
 homepage = "https://github.com/connorimes/heartbeats-simple-rust"
 repository = "https://github.com/connorimes/heartbeats-simple-rust"
-keywords = ["heartbeats", "timing", "performance", "energy", "power"]
+keywords = ["heartbeats", "timing", "accuracy", "performance", "energy", "power"]
 
 [dependencies]
 libc = "0.1"
 
-[dependencies.heartbeats-simple-sys]
+[dependencies.hbs-pow-sys]
 git = "https://github.com/connorimes/heartbeats-simple-sys.git"

@@ -1,11 +1,11 @@
-use heartbeats_simple_sys::pow::*;
+use hbs_pow_sys::*;
 use std::mem;
 use std::io::{self, Write};
 use std::fs::File;
 
-pub use heartbeats_simple_sys::pow::heartbeat_pow_context as HeartbeatPowContext;
-pub use heartbeats_simple_sys::pow::heartbeat_pow_record as HeartbeatPowRecord;
-pub use heartbeats_simple_sys::pow::heartbeat_pow_window_complete as HeartbeatPowWindowComplete;
+pub use hbs_pow_sys::heartbeat_pow_context as HeartbeatPowContext;
+pub use hbs_pow_sys::heartbeat_pow_record as HeartbeatPowRecord;
+pub use hbs_pow_sys::heartbeat_pow_window_complete as HeartbeatPowWindowComplete;
 
 /// Contains the Heartbeat and its window data buffer.
 pub struct HeartbeatPow {
