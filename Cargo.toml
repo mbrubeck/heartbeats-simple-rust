@@ -8,8 +8,18 @@ homepage = "https://github.com/connorimes/heartbeats-simple-rust"
 repository = "https://github.com/connorimes/heartbeats-simple-rust"
 keywords = ["heartbeats", "timing", "accuracy", "performance", "energy", "power"]
 
-[dependencies]
-libc = "0.1"
+[lib]
+name = "heartbeats_simple"
+path = "lib.rs"
 
-[dependencies.hbs-pow-sys]
-git = "https://github.com/connorimes/heartbeats-simple-sys.git"
+[dependencies.hbs]
+path = "hbs-rs"
+
+[dependencies.hbs-acc]
+path = "hbs-acc-rs"
+
+[dependencies.hbs-pow]
+path = "hbs-pow-rs"
+
+[dependencies.hbs-acc-pow]
+path = "hbs-acc-pow-rs"

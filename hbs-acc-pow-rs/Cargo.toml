@@ -1,0 +1,13 @@
+[package]
+name = "hbs-acc-pow"
+version = "0.1.0"
+authors = ["Connor Imes <connor.k.imes@gmail.com>"]
+description = "Rust wrappers for hbs-acc-pow-sys"
+license = "MIT"
+homepage = "https://github.com/connorimes/heartbeats-simple-rust"
+repository = "https://github.com/connorimes/heartbeats-simple-rust"
+keywords = ["heartbeats", "timing", "performance", "accuracy", "energy", "power"]
+
+[lib]
+name = "hbs_acc_pow"
+path = "lib.rs"
