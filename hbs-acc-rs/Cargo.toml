@@ -11,3 +11,9 @@ keywords = ["heartbeats", "timing", "performance", "accuracy"]
 [lib]
 name = "hbs_acc"
 path = "lib.rs"
+
+[dependencies]
+libc = "0.1"
+
+[dependencies.hbs-acc-sys]
+git = "https://github.com/connorimes/heartbeats-simple-sys.git"
