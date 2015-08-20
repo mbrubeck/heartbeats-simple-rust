@@ -14,5 +14,5 @@ Add `heartbeats-simple-rust` as a dependency in `Cargo.toml`:
 
 ```toml
 [dependencies.heartbeats-simple-rust]
-git = "https://github.com/connorimes/heartbeats-simple-rust.git"
+git = "https://github.com/libheartbeats/heartbeats-simple-rust.git"
 ```

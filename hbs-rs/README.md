@@ -13,5 +13,5 @@ Add `hbs` as a dependency in `Cargo.toml`:
 
 ```toml
 [dependencies.hbs]
-git = "https://github.com/connorimes/heartbeats-simple-rust.git"
+git = "https://github.com/libheartbeats/heartbeats-simple-rust.git"
 ```
