@@ -2,7 +2,7 @@
 
 The `hbs-acc-pow` crate provides abstractions over the `hbs-acc-pow-sys` crate,
 available at
-[https://github.com/connorimes/heartbeats-simple-sys](https://github.com/connorimes/heartbeats-simple-sys).
+[https://github.com/libheartbeats/heartbeats-simple-sys](https://github.com/libheartbeats/heartbeats-simple-sys).
 
 ## Dependencies
 

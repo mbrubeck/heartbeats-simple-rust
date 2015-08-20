@@ -2,7 +2,7 @@
 
 The `heartbeats-simple-rust` crate provides abstractions over the
 `heartbeats-simple-sys` crates, available at
-[https://github.com/connorimes/heartbeats-simple-sys](https://github.com/connorimes/heartbeats-simple-sys).
+[https://github.com/libheartbeats/heartbeats-simple-sys](https://github.com/libheartbeats/heartbeats-simple-sys).
 
 ## Dependencies
 
