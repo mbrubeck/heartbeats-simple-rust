@@ -31,6 +31,7 @@ impl HeartbeatAcc {
             match heartbeat_acc_init(&mut hb,
                                      hbr.capacity() as u64,
                                      hbr.as_mut_ptr(),
+                                     -1,
                                      hwc_callback) {
                 0 => hb,
                 _ => return Err("Failed to initialize heartbeat")

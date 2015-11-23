@@ -1,6 +1,6 @@
 [package]
 name = "heartbeats-simple"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Connor Imes <connor.k.imes@gmail.com>"]
 description = "Rust wrappers for heartbeats-simple-sys"
 license = "MIT"
