@@ -13,7 +13,7 @@ name = "hbs_acc_pow"
 path = "lib.rs"
 
 [dependencies]
-libc = "0.1"
+libc = "0.2"
 
 [dependencies.hbs-acc-pow-sys]
 git = "https://github.com/libheartbeats/heartbeats-simple-sys.git"
