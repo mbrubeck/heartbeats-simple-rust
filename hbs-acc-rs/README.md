@@ -12,6 +12,6 @@ The `hbs-acc` crate depends on the `hbs-acc-sys` crate.
 Add `hbs-acc` as a dependency in `Cargo.toml`:
 
 ```toml
-[dependencies.hbs-acc]
-git = "https://github.com/libheartbeats/heartbeats-simple-rust.git"
+[dependencies]
+hbs-acc = "0.2"
 ```

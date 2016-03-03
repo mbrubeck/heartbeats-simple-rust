@@ -12,6 +12,6 @@ The `hbs` crate depends on the `hbs-sys` crate.
 Add `hbs` as a dependency in `Cargo.toml`:
 
 ```toml
-[dependencies.hbs]
-git = "https://github.com/libheartbeats/heartbeats-simple-rust.git"
+[dependencies]
+hbs = "0.2"
 ```

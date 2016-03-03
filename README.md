@@ -1,20 +1,20 @@
-# Simple Heartbeats Rust Wrappers
+# Simple Heartbeats Rust Abstractions
 
-The `heartbeats-simple-rust` crate provides abstractions over the
+The `heartbeats-simple` crate provides abstractions over the
 `heartbeats-simple-sys` crates, available at
 [https://github.com/libheartbeats/heartbeats-simple-sys](https://github.com/libheartbeats/heartbeats-simple-sys).
 
 ## Dependencies
 
-The `heartbeats-simple-rust` crate depends on all the wrapper crates in this
+The `heartbeats-simple` crate depends on all the abstraction crates in this
 project.
 
 ## Usage
-Add `heartbeats-simple-rust` as a dependency in `Cargo.toml`:
+Add `heartbeats-simple` as a dependency in `Cargo.toml`:
 
 ```toml
-[dependencies.heartbeats-simple-rust]
-git = "https://github.com/libheartbeats/heartbeats-simple-rust.git"
+[dependencies]
+heartbeats-simple = "0.2"
 ```
 
 ## License

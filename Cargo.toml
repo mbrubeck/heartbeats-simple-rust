@@ -2,24 +2,18 @@
 name = "heartbeats-simple"
 version = "0.2.0"
 authors = ["Connor Imes <connor.k.imes@gmail.com>"]
-description = "Rust wrappers for heartbeats-simple-sys"
+description = "Rust abstractions for heartbeats-simple-sys"
 license = "MIT OR Apache-2.0"
 homepage = "https://github.com/libheartbeats/heartbeats-simple-rust"
 repository = "https://github.com/libheartbeats/heartbeats-simple-rust"
-keywords = ["heartbeats", "timing", "accuracy", "performance", "energy", "power"]
+keywords = ["heartbeats", "accuracy", "performance", "power"]
 
 [lib]
 name = "heartbeats_simple"
 path = "lib.rs"
 
-[dependencies.hbs]
-path = "hbs-rs"
-
-[dependencies.hbs-acc]
-path = "hbs-acc-rs"
-
-[dependencies.hbs-pow]
-path = "hbs-pow-rs"
-
-[dependencies.hbs-acc-pow]
-path = "hbs-acc-pow-rs"
+[dependencies]
+hbs = "0.2"
+hbs-acc = "0.2"
+hbs-pow = "0.2"
+hbs-acc-pow = "0.2"
