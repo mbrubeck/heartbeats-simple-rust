@@ -1,6 +1,6 @@
 [package]
 name = "heartbeats-simple"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Connor Imes <connor.k.imes@gmail.com>"]
 description = "Rust abstractions for heartbeats-simple-sys"
 license = "MIT OR Apache-2.0"
@@ -13,7 +13,5 @@ name = "heartbeats_simple"
 path = "lib.rs"
 
 [dependencies]
-hbs = "0.2"
-hbs-acc = "0.2"
-hbs-pow = "0.2"
-hbs-acc-pow = "0.2"
+libc = "0.2"
+heartbeats-simple-sys = "0.3"

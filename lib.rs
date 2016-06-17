@@ -1,7 +1,10 @@
-extern crate hbs;
-extern crate hbs_acc;
-extern crate hbs_pow;
-extern crate hbs_acc_pow;
+extern crate libc;
+extern crate heartbeats_simple_sys;
+
+mod hbs;
+mod hbs_acc;
+mod hbs_pow;
+mod hbs_acc_pow;
 
 pub use hbs::*;
 pub use hbs_acc::*;

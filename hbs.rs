@@ -1,14 +1,11 @@
-extern crate libc;
-extern crate hbs_sys;
-
-use hbs_sys::*;
+use heartbeats_simple_sys::*;
 use std::mem;
 use std::io::{self, Write};
 use std::fs::File;
 
-pub use hbs_sys::heartbeat_context as HeartbeatContext;
-pub use hbs_sys::heartbeat_record as HeartbeatRecord;
-pub use hbs_sys::heartbeat_window_complete as HeartbeatWindowComplete;
+pub use heartbeats_simple_sys::heartbeat_context as HeartbeatContext;
+pub use heartbeats_simple_sys::heartbeat_record as HeartbeatRecord;
+pub use heartbeats_simple_sys::heartbeat_window_complete as HeartbeatWindowComplete;
 
 /// Contains the Heartbeat and its window data buffer.
 pub struct Heartbeat {

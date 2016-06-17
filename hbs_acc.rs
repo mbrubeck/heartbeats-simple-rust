@@ -1,14 +1,11 @@
-extern crate libc;
-extern crate hbs_acc_sys;
-
-use hbs_acc_sys::*;
+use heartbeats_simple_sys::*;
 use std::mem;
 use std::io::{self, Write};
 use std::fs::File;
 
-pub use hbs_acc_sys::heartbeat_acc_context as HeartbeatAccContext;
-pub use hbs_acc_sys::heartbeat_acc_record as HeartbeatAccRecord;
-pub use hbs_acc_sys::heartbeat_acc_window_complete as HeartbeatAccWindowComplete;
+pub use heartbeats_simple_sys::heartbeat_acc_context as HeartbeatAccContext;
+pub use heartbeats_simple_sys::heartbeat_acc_record as HeartbeatAccRecord;
+pub use heartbeats_simple_sys::heartbeat_acc_window_complete as HeartbeatAccWindowComplete;
 
 /// Contains the Heartbeat and its window data buffer.
 pub struct HeartbeatAcc {
