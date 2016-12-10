@@ -13,7 +13,7 @@ Add `heartbeats-simple` as a dependency in `Cargo.toml`:
 
 ```toml
 [dependencies]
-heartbeats-simple = "0.3"
+heartbeats-simple = "0.4"
 ```
 
 ## License

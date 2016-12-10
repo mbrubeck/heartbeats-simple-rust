@@ -17,7 +17,7 @@ pub struct HeartbeatAccPow {
 impl HeartbeatAccPow {
     /// Allocate and initialize a new `Heartbeat`.
     pub fn new(window_size: usize,
-               hwc_callback: Option<HeartbeatAccPowWindowComplete>,
+               hwc_callback: HeartbeatAccPowWindowComplete,
                mut log: Option<File>) -> Result<HeartbeatAccPow, &'static str> {
         let mut hbr: Vec<HeartbeatAccPowRecord> = Vec::with_capacity(window_size);
         let hb: HeartbeatAccPowContext = unsafe {
