@@ -161,17 +161,17 @@ mod test {
 
     #[test]
     fn test_callback() {
-        static mut received_cb: bool = false;
+        static mut RECEIVED_CB: bool = false;
         extern fn callback(_hb: *const HeartbeatContext) {
             unsafe {
-                received_cb = true;
+                RECEIVED_CB = true;
             }
         }
 
         let mut hb = Heartbeat::new(1, Some(callback), None).unwrap();
         hb.heartbeat(0, 1, 0, 1000);
         unsafe {
-            assert!(received_cb);
+            assert!(RECEIVED_CB);
         }
     }
 
